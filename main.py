@@ -3,8 +3,12 @@
 # throughout this file
 import pygame
 from constants import *
-from player import *
+from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
+
 from circleshape import *
+
 
 BLACK = (0, 0, 0)
 
@@ -19,9 +23,15 @@ def main():
     # Create sprite groups for managing game objects
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
     # Assign the sprite groups to the Player class and create player
     Player.containers = (updatable, drawable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) 
+    # Assign the sprite groups to the Asteroid class
+    Asteroid.containers = (asteroids, updatable, drawable)
+    # Create asteroid field
+    AsteroidField.containers = updatable
+    asteroid_field = AsteroidField()
 
 
     # Set up the display
