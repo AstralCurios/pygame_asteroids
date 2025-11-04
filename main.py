@@ -53,6 +53,11 @@ def main():
                 print("Game over!")
                 sys.exit()
 
+            for shot in shots: # Check for collisions between shots and asteroids
+                if asteroid.collides_with(shot):
+                    asteroid.kill()
+                    shot.kill()
+
         screen.fill(BLACK)  # Fill the screen with black
 
         for obj in drawable:   # Draw all drawable objects
@@ -61,6 +66,7 @@ def main():
         pygame.display.flip() #Update the full display Surface to the screen
         game_clock.tick(60)  # Cap the frame rate at 60 FPS
         dt = game_clock.get_time() / 1000.0  # Convert milliseconds to seconds
+
 
 
 if __name__ == "__main__":
