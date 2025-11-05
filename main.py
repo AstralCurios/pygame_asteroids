@@ -3,6 +3,7 @@
 # throughout this file
 import sys
 import pygame
+import random
 from constants import *
 from player import Player
 from asteroid import Asteroid
@@ -55,7 +56,7 @@ def main():
 
             for shot in shots: # Check for collisions between shots and asteroids
                 if asteroid.collides_with(shot):
-                    asteroid.kill()
+                    asteroid.split()
                     shot.kill()
 
         screen.fill(BLACK)  # Fill the screen with black
